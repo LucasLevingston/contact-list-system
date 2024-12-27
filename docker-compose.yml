@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  contact-list-db:
+    image: mysql:8.0
+    container_name: contact-list-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: contact_system
+      MYSQL_USER: prisma
+      MYSQL_PASSWORD: prismapass
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  contact-list-db-tests:
+    image: mysql:8.0
+    container_name: contact-list-db-tests
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: contact_system
+      MYSQL_USER: prisma
+      MYSQL_PASSWORD: prismapass
+    ports:
+      - '6033:3306' # Mapeia a porta 3306 do contêiner para a porta 6033 do host
+    volumes:
+      - mysql_data_test:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+volumes:
+  mysql_data_prod:
+  mysql_data_test:
