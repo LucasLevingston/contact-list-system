@@ -1,11 +1,15 @@
 import express, { Request, Response, Router } from 'express'
 import { z } from 'zod'
-import prisma from '../../lib/prisma'
+import { prisma } from '../../lib/prisma'
 
 const router = Router()
 
 const GroupSchema = z.object({
-  name: z.string(),
+  name: z.string().min(1, { message: 'Name cannot be empty' }),
+})
+
+const IdSchema = z.object({
+  id: z.coerce.number().int().positive(),
 })
 
 /**
@@ -78,13 +82,16 @@ const GroupSchema = z.object({
  */
 
 router.patch('/groups/:id', async (req: Request, res: Response, next: Function) => {
-  const { id } = req.params
   try {
+    const { id } = IdSchema.parse(req.params)
+
     const updates = GroupSchema.parse(req.body)
+
     const updatedGroup = await prisma.group.update({
-      where: { id: Number(id) },
+      where: { id },
       data: updates,
     })
+
     res.status(200).json(updatedGroup)
   } catch (error) {
     next(error)

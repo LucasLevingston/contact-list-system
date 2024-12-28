@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import request from 'supertest'
 import { setupApp } from '../../../setup'
-import prisma from '../../../lib/prisma'
+import { prisma } from '../../../lib/prisma'
 
 const app = setupApp()
 let testContactId: number

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { ZodError, z } from 'zod'
+import { z } from 'zod'
 import { Prisma } from '@prisma/client'
 import { errorHandler } from '../error-handler'
 

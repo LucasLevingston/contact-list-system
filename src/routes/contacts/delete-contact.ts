@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express'
-import prisma from '../../lib/prisma'
+import { prisma } from '../../lib/prisma'
 import { z } from 'zod'
 
 const router = Router()
@@ -66,9 +66,7 @@ router.delete('/contacts/:id', async (req: Request, res: Response, next: Functio
       return
     }
 
-    await prisma.contact.delete({
-      where: { id },
-    })
+    await prisma.contact.delete({ where: { id } })
     res.status(204).send()
   } catch (error) {
     next(error)

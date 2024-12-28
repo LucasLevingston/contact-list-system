@@ -8,7 +8,7 @@ export default defineConfig({
     environment: 'node',
     clearMocks: true,
     env: {
-      ...config({ path: './.testing.env' }).parsed,
+      ...config({ path: './.env.test' }).parsed,
     },
     fileParallelism: false,
     coverage: {

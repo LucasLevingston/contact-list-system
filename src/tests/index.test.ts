@@ -14,7 +14,7 @@ import getContactsByGroup from '../../src/routes/groups/get-contacts-by-group'
 import getReports from '../routes/reports/get-contact-group-report'
 import { errorHandler } from '../../src/error-handler'
 import { beforeAll, describe, expect, it } from 'vitest'
-import prisma from '../lib/prisma'
+import { prisma } from '../lib/prisma'
 
 const app = express()
 app.use(cors())
@@ -48,8 +48,10 @@ describe('App Routes', () => {
     const response = await request(app)
       .post('/contacts')
       .send({ name: 'Test', phone: '(83) 9961-6220' })
+
     expect(response.status).toBe(201)
-    expect(response.body).toHaveProperty('id')
+    expect(response.body).to.have.property('name', 'Test')
+    expect(response.body).to.have.property('phone', '(83) 9961-6220')
   })
 
   it('should respond with 200 on PATCH /contacts/:id', async () => {

@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express'
 import { z } from 'zod'
-import prisma from '../../lib/prisma'
+import { prisma } from '../../lib/prisma'
 
 const router = Router()
 
@@ -95,15 +95,18 @@ const ContactSchema = z.object({
 
 router.patch('/contacts/:id', async (req: Request, res: Response, next: Function) => {
   const { id } = req.params
+  if (isNaN(Number(id))) {
+    res.status(400).json({ message: 'Invalid ID format' })
+    return
+  }
+
   try {
     const updates = ContactSchema.parse(req.body)
 
-    if (id) {
-      const contact = await prisma.contact.findUnique({ where: { id: Number(id) } })
-      if (!contact) {
-        res.status(404).json({ error: 'Contact not found.' })
-        return
-      }
+    const contact = await prisma.contact.findUnique({ where: { id: Number(id) } })
+    if (!contact) {
+      res.status(404).json({ error: 'Contact not found.' })
+      return
     }
 
     const updatedContact = await prisma.contact.update({

@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express'
-import prisma from '../../lib/prisma'
+import { prisma } from '../../lib/prisma'
 
 const router = Router()
 
@@ -54,11 +54,22 @@ const router = Router()
  */
 
 router.get('/contacts', async (req: Request, res: Response, next: Function) => {
-  const { limit = 10, offset = 0 } = req.query
+  const limit = parseInt(req.query.limit as string) || 10
+  const offset = parseInt(req.query.offset as string) || 0
+
+  if (isNaN(limit) || limit <= 0) {
+    res.status(400).json({ message: 'Limit must be a positive integer' })
+    return
+  }
+  if (isNaN(offset) || offset < 0) {
+    res.status(400).json({ message: 'Offset must be a non-negative integer' })
+    return
+  }
+
   try {
     const contacts = await prisma.contact.findMany({
-      skip: Number(offset),
-      take: Number(limit),
+      skip: offset,
+      take: limit,
       orderBy: { name: 'asc' },
     })
     res.status(200).json(contacts)

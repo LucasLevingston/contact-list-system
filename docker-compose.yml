@@ -26,7 +26,7 @@ services:
       MYSQL_USER: prisma
       MYSQL_PASSWORD: prismapass
     ports:
-      - '6033:3306' # Mapeia a porta 3306 do contêiner para a porta 6033 do host
+      - '6033:3306'
     volumes:
       - mysql_data_test:/var/lib/mysql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

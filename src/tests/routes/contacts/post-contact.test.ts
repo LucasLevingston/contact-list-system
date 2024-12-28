@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
 import request from 'supertest'
 import { setupApp } from '../../../setup'
-import prisma from '../../../lib/prisma'
+import { prisma } from '../../../lib/prisma'
 
 vi.mock('../../src/services/eventService')
 

@@ -1,11 +1,11 @@
 import { Request, Response, Router } from 'express'
 import { z } from 'zod'
-import prisma from '../../lib/prisma'
+import { prisma } from '../../lib/prisma'
 
 const router = Router()
 
 const GroupSchema = z.object({
-  name: z.string(),
+  name: z.string().min(1, { message: 'Name cannot be empty' }),
 })
 
 /**

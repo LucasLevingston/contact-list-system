@@ -1,7 +1,7 @@
 import request from 'supertest'
 import { describe, it, expect, afterAll, beforeAll } from 'vitest'
 import { setupApp } from '../../../setup'
-import prisma from '../../../lib/prisma'
+import { prisma } from '../../../lib/prisma'
 
 const app = setupApp()
 

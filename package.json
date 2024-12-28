@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "tsx watch --env-file .env src/server.ts",
     "lint": "eslint .",
- "generate": "npx prisma generate && npx prisma migrate dev",
-    "test": "vitest"
+    "test": "set NODE_ENV=test && npx prisma generate && vitest"
   },
   "keywords": [],
   "author": "",
