@@ -73,39 +73,26 @@ docker-compose up -d
 
 Here you can list the main routes of your API and their descriptions.
 
-| Route                                 | Description                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| <kbd>GET /authenticate</kbd>          | Retrieves user info. See [response details](#get-auth-detail)                                          |
-| <kbd>POST /authenticate</kbd>         | Authenticate user into the API. See [request details](#post-auth-detail)                               |
-| <kbd>POST /contacts</kbd>             | Add a new contact.                                                                                     |
-| **Body:**                             | `{"name": "string", "phone": "string"}`                                                                |
-| **Response:**                         | Return the created contact (id, name, and phone) with a status of 201.                                 |
-| <kbd>GET /contacts</kbd>              | Returns a paginated list of contacts, sorted alphabetically by name.                                   |
-| **Optimization:**                     | Use LIMIT and OFFSET for pagination and indexes in the database.                                       |
-| **Response:**                         | Return a list of contacts with a status of 200.                                                        |
-| <kbd>PATCH /contacts/id</kbd>         | Update an existing contact.                                                                            |
-| **Parameter:**                        | `id` (unique identifier of the contact to be updated)                                                  |
-| **Body:**                             | `{"name": "string", "phone": "string"}`                                                                |
-| **Response:**                         | Return the updated contact with a status of 200.                                                       |
-| <kbd>DELETE /contacts/id</kbd>        | Delete an existing contact.                                                                            |
-| **Parameter:**                        | `id` (unique identifier of the contact to be deleted)                                                  |
-| **Response:**                         | Return a success message with a status of 204.                                                         |
-| <kbd>POST /groups</kbd>               | Create groups to link contacts.                                                                        |
-| **Body:**                             | `{"name": "string"}`                                                                                   |
-| **Response:**                         | Return the created group (id and name) with a status of 201.                                           |
-| <kbd>PATCH /groups/id</kbd>           | Update an existing group.                                                                              |
-| **Parameter:**                        | `id` (unique identifier of the group to be updated)                                                    |
-| **Body:**                             | `{"name": "string"}`                                                                                   |
-| **Response:**                         | Return the updated group with a status of 200.                                                         |
-| <kbd>DELETE /groups/id</kbd>          | Delete an existing group.                                                                              |
-| **Parameter:**                        | `id` (unique identifier of the group to be deleted)                                                    |
-| **Response:**                         | Return a success message with a status of 204.                                                         |
-| <kbd>GET /groups/:id/contacts</kbd>   | List all contacts linked to a specific group.                                                          |
-| **Response:**                         | Return a list of contacts belonging to a group, with a status of 200.                                  |
-| **Challenge:**                        | Ensure the query is optimized even with a large volume of data.                                        |
-| <kbd>GET /report/contact-groups</kbd> | Returns a report with the number of contacts in each group, ordered by the highest number of contacts. |
-| **Response:**                         | Return an array with the groups and corresponding contacts, with a status of 200.                      |
-| **Example:**                          | `[{ "group": "Client X", "contact_count": 35 }, { "group": "Suppliers", "contact_count": 20 }]`        |
+| Route                                 | Description                                                                                                  | Body / Parameter                        | Response                                                                          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------- | --------------------------------------------------------------------------------- |
+| <kbd>GET /authenticate</kbd>          | Retrieves user info. See [response details](#get-auth-detail)                                                |                                         |                                                                                   |
+| <kbd>POST /authenticate</kbd>         | Authenticate user into the API. See [request details](#post-auth-detail)                                     |                                         |                                                                                   |
+| <kbd>POST /contacts</kbd>             | Add a new contact.                                                                                           | `{"name": "string", "phone": "string"}` | Return the created contact (id, name, and phone) with a status of 201.            |
+| <kbd>GET /contacts</kbd>              | Returns a paginated list of contacts, sorted alphabetically by name.                                         |                                         | Return a list of contacts with a status of 200.                                   |
+|                                       | **Optimization:** Use LIMIT and OFFSET for pagination and indexes in the database.                           |                                         |                                                                                   |
+| <kbd>PATCH /contacts/id</kbd>         | Update an existing contact.                                                                                  | `{"name": "string", "phone": "string"}` | Return the updated contact with a status of 200.                                  |
+| **Parameter:**                        | `id` (unique identifier of the contact to be updated)                                                        |                                         |                                                                                   |
+| <kbd>DELETE /contacts/id</kbd>        | Delete an existing contact.                                                                                  |                                         | Return a success message with a status of 204.                                    |
+| **Parameter:**                        | `id` (unique identifier of the contact to be deleted)                                                        |                                         |                                                                                   |
+| <kbd>POST /groups</kbd>               | Create groups to link contacts.                                                                              | `{"name": "string"}`                    | Return the created group (id and name) with a status of 201.                      |
+| <kbd>PATCH /groups/id</kbd>           | Update an existing group.                                                                                    | `{"name": "string"}`                    | Return the updated group with a status of 200.                                    |
+| **Parameter:**                        | `id` (unique identifier of the group to be updated)                                                          |                                         |                                                                                   |
+| <kbd>DELETE /groups/id</kbd>          | Delete an existing group.                                                                                    |                                         | Return a success message with a status of 204.                                    |
+| **Parameter:**                        | `id` (unique identifier of the group to be deleted)                                                          |                                         |                                                                                   |
+| <kbd>GET /groups/:id/contacts</kbd>   | List all contacts linked to a specific group.                                                                |                                         | Return a list of contacts belonging to a group, with a status of 200.             |
+|                                       | **Challenge:** Ensure the query is optimized even with a large volume of data.                               |                                         |                                                                                   |
+| <kbd>GET /report/contact-groups</kbd> | Returns a report with the number of contacts in each group, ordered by the highest number of contacts.       |                                         | Return an array with the groups and corresponding contacts, with a status of 200. |
+|                                       | **Example:** `[{ "group": "Client X", "contact_count": 35 }, { "group": "Suppliers", "contact_count": 20 }]` |                                         |                                                                                   |
 
 <h3 id="post-auth-detail">Access the following link to access the documentation</h3>
 
