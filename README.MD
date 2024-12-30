@@ -12,8 +12,8 @@
 
 <p align="center">
  <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a>
-
+  <a href="#routes">API Endpoints</a> •
+ <a href="#tests">Getting Started</a>  
 </p>
 
 <p align="center">
@@ -94,4 +94,12 @@ Here you can list the main routes of your API and their descriptions.
 
 ```json
 http://localhost:3000/api-docs
+```
+
+<h2 id="tests">🧪 Unit Tests </h2>
+
+Use the following command to run unit tests with vitest on the test database
+
+```bash
+npm run test
 ```
