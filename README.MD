@@ -17,16 +17,16 @@
 </p>
 
 <p align="center">
-  <b>Simple description of what your project do or how to use it.</b>
+  <b>Contact List Management API with Node.Js.</b>
 </p>
 
 <h2 id="started">🚀 Getting started</h2>
 
-Here you describe how to run your project locally
+Perform the following steps to install the system
 
 <h3>Prerequisites</h3>
 
-Here you list all prerequisites necessary for running your project. For example:
+Prerequisites necessary for running the project.
 
 - [NodeJS](https://github.com/)
 - [Git](https://github.com)
@@ -34,7 +34,7 @@ Here you list all prerequisites necessary for running your project. For example:
 
 <h3>Cloning</h3>
 
-How to clone your project
+How to clone the project
 
 ```bash
 git clone https://github.com/LucasLevingston/contact-list-system
@@ -53,7 +53,7 @@ HOST=localhost
 
 <h3>Starting</h3>
 
-How to start your project
+How to start the project
 
 ```bash
 cd contact-list-system
@@ -61,9 +61,7 @@ npm install
 npx prisma generate
 ```
 
-<h3>Inicialize Container</h3>
-
-How to start your project
+Inicialize Container
 
 ```bash
 docker-compose up -d
@@ -94,7 +92,7 @@ Here you can list the main routes of your API and their descriptions.
 | <kbd>GET /report/contact-groups</kbd> | Returns a report with the number of contacts in each group, ordered by the highest number of contacts.       |                                         | Return an array with the groups and corresponding contacts, with a status of 200. |
 |                                       | **Example:** `[{ "group": "Client X", "contact_count": 35 }, { "group": "Suppliers", "contact_count": 20 }]` |                                         |                                                                                   |
 
-<h3 id="post-auth-detail">Access the following link to access the documentation</h3>
+<h3 id="post-auth-detail">Access the following link to access the swagger documentation</h3>
 
 ```json
 http://localhost:3000/api-docs
