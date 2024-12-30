@@ -92,7 +92,7 @@ Here you can list the main routes of your API and their descriptions.
 
 <h3 id="post-auth-detail">Access the following link to access the swagger documentation</h3>
 
-```json
+```bash
 http://localhost:3000/api-docs
 ```
 
