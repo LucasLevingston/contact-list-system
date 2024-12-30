@@ -53,18 +53,18 @@ HOST=localhost
 
 <h3>Starting</h3>
 
+Inicialize container in docker to create database and database for testing
+
+```bash
+docker-compose up -d
+```
+
 How to start the project
 
 ```bash
 cd contact-list-system
 npm install
 npx prisma generate
-```
-
-Inicialize Container
-
-```bash
-docker-compose up -d
 ```
 
 <h2 id="routes">📍 API Endpoints</h2>
